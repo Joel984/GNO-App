@@ -1,32 +1,44 @@
 import es.ulpgc.hpi.gno.*;
 
-
 public class Main {
     public static void main(String[] args) {
-        User user = new User("Pepe Hernández");
-        ObjectScanner scanner = new ObjectScanner();
+        // Instancia del controlador principal
+        AppController app = new AppController("Pepe Hernández");
 
-        ScannedHistory scannedHistory = new ScannedHistory();
+        // Mostrar nombre del usuario
+        System.out.println("User: " + app.getUserName());
 
+        // Creación de categorías
+        Category techCategory = new Category("Technology");
+        Category homeCategory = new Category("Home Appliances");
 
-        // Scanning objects
-        ScannedObject object1 = new ScannedObject("AirPods (3rd generation)", "Apple", 149.00);
-        ScannedObject object2 = new ScannedObject("DeathAdder V3 Pro", "Razer", 199.99);
-        ScannedObject object3 = new ScannedObject("EF 50mm f/1.4 USM", "Canon", 419.99);
+        // Escaneo y adición de objetos utilizando ObjectScanner
+        app.scanAndAddObject("AirPods (3rd generation)", "Apple", 149.00, null);
+        app.scanAndAddObject("DeathAdder V3 Pro", "Razer", 199.99, techCategory);
+        app.scanAndAddObject("Blender 5000", "Philips", 79.99, homeCategory);
 
-        // Adding to history
-        scannedHistory.addScannedObject(object1);
-        scannedHistory.addScannedObject(object2);
-        scannedHistory.addScannedObject(object3);
+        // Mostrar todos los objetos escaneados
+        System.out.println("\nAll Scanned Objects:");
+        app.printScannedHistory();
 
-        // Displaying history
-        System.out.println("All Scanned Objects:");
-        System.out.println(scannedHistory);
+        // Adición de más objetos
+        app.scanAndAddObject("Gaming Chair", "Secretlab", 499.99, techCategory);
+        app.scanAndAddObject("Coffee Maker", "De'Longhi", 99.99, homeCategory);
 
-        // Displaying recent objects
-        System.out.println("Recent Scanned Objects:");
-        for (ScannedObject obj : scannedHistory.getRecentObjects()) {
-            System.out.println(obj);
-        }
+        // Mostrar los últimos cinco objetos escaneados
+        app.printRecentScannedObjects();
+
+        // Usar HistoryAnalytics para analizar el historial completo
+        System.out.println("\nAnalytics Summary:");
+        double averagePrice = HistoryAnalytics.calculateAveragePrice(app.getUserScannedHistory().getRecentObjects());
+        ScannedObject mostExpensive = HistoryAnalytics.getMostExpensiveObject(app.getUserScannedHistory().getRecentObjects());
+        ScannedObject leastExpensive = HistoryAnalytics.getLeastExpensiveObject(app.getUserScannedHistory().getRecentObjects());
+
+        // Mostrar los resultados del análisis
+        System.out.printf("Average Price: %.2f%n", averagePrice);
+        System.out.println("Most Expensive Object: " + (mostExpensive != null ? mostExpensive : "None"));
+        System.out.println("Least Expensive Object: " + (leastExpensive != null ? leastExpensive : "None"));
     }
 }
+
+
