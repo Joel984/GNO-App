@@ -1,4 +1,7 @@
-import es.ulpgc.hpi.gno.*;
+import classes.AppController;
+import classes.Category;
+import classes.HistoryAnalytics;
+import classes.ScannedObject;
 
 public class Main {
     public static void main(String[] args) {

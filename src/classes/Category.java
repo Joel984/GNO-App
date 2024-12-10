@@ -1,4 +1,4 @@
-package es.ulpgc.hpi.gno;
+package classes;
 
 public class Category {
     private String name;

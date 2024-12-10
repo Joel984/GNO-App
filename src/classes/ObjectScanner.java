@@ -1,4 +1,4 @@
-package es.ulpgc.hpi.gno;
+package classes;
 
 public class ObjectScanner {
     public ScannedObject scan(String name, String brand, double price) {
