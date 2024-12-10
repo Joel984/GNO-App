@@ -16,7 +16,7 @@ public class Main {
         Category homeCategory = new Category("Home Appliances");
 
         // Escaneo y adición de objetos utilizando ObjectScanner
-        app.scanAndAddObject("AirPods (3rd generation)", "Apple", 149.00, null);
+        app.scanAndAddObject("AirPods (3rd generation)", "Apple", 149.00, techCategory);
         app.scanAndAddObject("DeathAdder V3 Pro", "Razer", 199.99, techCategory);
         app.scanAndAddObject("Blender 5000", "Philips", 79.99, homeCategory);
 
