@@ -13,9 +13,8 @@ public class AppController {
         return user.getName();
     }
 
-    public void scanAndAddObject(String name, String brand, double price, Category category) {
-        ScannedObject object = scanner.scan(name, brand, price);
-        object.setCategory(category);
+    public void scanAndAddObject() {
+        ScannedObject object = scanner.scan();
         user.getScannedHistory().addScannedObject(object);
     }
 
