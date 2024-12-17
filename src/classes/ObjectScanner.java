@@ -13,7 +13,6 @@ public class ObjectScanner {
     }
 
     private void initializeProducts() {
-        Category techCategory = new Category("Technology");
         products.add(new ScannedObject("AirPods (3rd generation)", "Apple", 149.00));
         products.add(new ScannedObject("DeathAdder V3 Pro", "Razer", 199.99));
         products.add(new ScannedObject("Blender 5000", "Philips", 79.99));
